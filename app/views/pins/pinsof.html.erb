@@ -1,13 +1,20 @@
- <h1>Lista de Pins</h1>
 
+
+
+<p>el usuario actual tiene el id: <%= @user_id %></p>
+
+<div class="container">
   <p id="notice"><%= notice %></p>
 
- 
- 
-  <div class="grid"  data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 400 }'>
+  <h1>Lista de Pins</h1>
+  <p>
+    <% if user_signed_in? %>
+      <%= link_to 'New Pin', new_pin_path %>
+    <% end %>
+  </p>
       <% @pins.each do |pin| %>
       
-        <div class="grid-item" >
+        <div class="col-md-3">
           <div class="thumbnail">
           <%= pin.name %>
             <%= image_tag(pin.photo, :class => 'img-responsive') %>
@@ -22,26 +29,8 @@
           </div>
         </div>
       <% end %>
-       <p>
-    <% if user_signed_in? %>
-      <%= link_to 'New Pin', new_pin_path %>
-    <% end %>
-  </p>
  
 
-      <br>
+  <br>
   
-  </div>
-<!-- <script  type="text/javascript" charset="utf-8" async defer>
-  $windows.load(function(){
-    
-    $('.grid').masonry({
-  // options
-  itemSelector: '.grid-item',
-  columnWidth: 200
-});
-})
-</script> -->
-<!--   <script type="text/javascript">
-  
-  </script>  -->
+</div>
